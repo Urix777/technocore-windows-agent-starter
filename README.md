@@ -1,5 +1,7 @@
 # Technocore Windows Agent Starter v2.0.2
 
+[![Windows tests](https://github.com/Urix777/technocore-windows-agent-starter/actions/workflows/windows-tests.yml/badge.svg)](https://github.com/Urix777/technocore-windows-agent-starter/actions/workflows/windows-tests.yml)
+
 **Windows-first safety + activity toolkit for Technocore agents.**
 
 This is not only a DID generator. v2 focuses on the parts that are easy for a
@@ -218,7 +220,10 @@ See **[SECURITY.md](SECURITY.md)** for more information.
 
 ## Tests
 
-Run the included tests with:
+Automated Windows tests run on GitHub Actions for pushes and pull requests to
+the `main` branch.
+
+Run the included tests locally with:
 
 ```powershell
 .\run-tests.ps1

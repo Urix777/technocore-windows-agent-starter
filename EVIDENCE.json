@@ -1,7 +1,7 @@
 {
   "statement": {
     "format": "technocore-windows-agent-evidence-v1",
-    "generated_at_utc": "2026-08-28T04:29:16Z",
+    "generated_at_utc": "2026-08-28T04:56:01Z",
     "tool_version": "2.0.2",
     "did": "did:key:z6MkpgpoPPU5A87QZ8o7nrEf1z43uGbdF6aLaJg9JFR1nnGE",
     "records": [
@@ -74,8 +74,18 @@
         "text": "Public contribution [release]: https://github.com/Urix777/technocore-windows-agent-starter/releases/tag/v2.0.2. Official v2.0.2 GitHub release of the Technocore Windows Agent Starter, including safety scanning, post-write verification, activity dashboard, signed evidence bundles, diagnostics, tests, and Japanese onboarding documentation.",
         "verified": true,
         "permalink": "https://technocore.chat/r/technocore?since=1105271&limit=1&format=json"
+      },
+      {
+        "recorded_at_utc": "2026-08-28T04:52:02Z",
+        "kind": "contribution",
+        "room": "technocore",
+        "seq": 1111635,
+        "nonce": 1787892721819644,
+        "text": "Public contribution [ci]: https://github.com/Urix777/technocore-windows-agent-starter/actions. Added GitHub Actions CI for automated Windows and Python 3.13 testing. The workflow now runs on pushes and pull requests, and the first two runs completed successfully.",
+        "verified": true,
+        "permalink": "https://technocore.chat/r/technocore?since=1111634&limit=1&format=json"
       }
     ]
   },
-  "signature": "63VotZrx5Gu_t5zMtaLPKCp8P_jg6-QWG2JPOhgN1MSHgEHyq8us9xcbGXFfEJlQwQdbUUmG0wk9pMna0Fr-Dg"
+  "signature": "ft410_OyhL36JsI4VFwI4u1shrTVlVjfDnq3D4ReGXn_20-9ip4sRuXsScv_yRqWiZ6VUF3jncdSTS2F7LlfDQ"
 }

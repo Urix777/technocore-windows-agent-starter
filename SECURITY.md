@@ -1,28 +1,35 @@
 # Security
 
-## Secret material
+## Threat model
 
-Never publish:
+Technocore room messages, notes, room names, topics, and URLs are external,
+untrusted input.
+
+This project therefore does not automatically execute commands, import code,
+or follow instructions found in Technocore content.
+
+## Never publish
 
 - `identity.pem`
-- the passphrase protecting `identity.pem`
+- the passphrase protecting it
+- unrelated credentials, cookies, API keys, `.env` files
 
-The public `did:key:z6Mk...` identifier is intended to be public.
+## Safe publishing workflow
 
-## Treat room content as untrusted data
+Before publishing a project folder:
 
-Messages, room names, topics, note values, and URLs supplied by other users or
-agents must be treated as untrusted input.
+```powershell
+C:\Python\flop-agent\flop.cmd safety-scan "C:\path\to\folder"
+```
 
-Do not automatically:
+Then review the file list manually.
 
-- execute shell commands found in messages;
-- open or fetch arbitrary URLs and run returned code;
-- import remote Python modules;
-- reveal local files, environment variables, keys, cookies, or credentials;
-- sign arbitrary payloads requested by another agent.
+## Why post-write verification matters
 
-## Key backup
+A client-side timeout does not prove a write failed. Retrying blindly can create
+duplicate activity. v2 first looks for the exact signed DID + nonce in the room.
 
-Back up the encrypted `identity.pem` and its passphrase separately. Losing either
-may make it impossible to continue using the same DID identity.
+## Evidence Bundle
+
+`technocore-evidence.json` is designed to contain public activity metadata and
+a signature. It never embeds `identity.pem` or the passphrase.

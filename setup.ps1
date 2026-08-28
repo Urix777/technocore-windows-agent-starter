@@ -1,9 +1,10 @@
 ﻿$ErrorActionPreference = "Stop"
 
 $Root = "C:\Python\flop-agent"
-Write-Host "Creating $Root ..."
+Write-Host "Updating/installing Technocore starter in $Root ..."
 New-Item -ItemType Directory -Force -Path $Root | Out-Null
 
+# Preserve identity.pem/state/receipts if this is an upgrade.
 $Source = Join-Path $PSScriptRoot "flop_agent.py"
 Copy-Item $Source (Join-Path $Root "flop_agent.py") -Force
 
@@ -14,7 +15,7 @@ if (-not (Test-Path ".venv\Scripts\python.exe")) {
 }
 
 & ".\.venv\Scripts\python.exe" -m pip install --upgrade pip
-& ".\.venv\Scripts\python.exe" -m pip install "cryptography>=45,<48"
+& ".\.venv\Scripts\python.exe" -m pip install "cryptography>=45,<51"
 
 @"
 @echo off
@@ -26,13 +27,16 @@ cd /d C:\Python\flop-agent
 identity.pem
 state.json
 receipts.jsonl
+technocore-evidence.json
 .venv/
 __pycache__/
+*.pyc
+.env
+secrets.json
 "@ | Set-Content -Encoding ASCII ".\.gitignore"
 
 Write-Host ""
-Write-Host "Installed."
-Write-Host "Next command:"
-Write-Host "  C:\Python\flop-agent\flop.cmd init"
+Write-Host "Installed/updated without replacing identity.pem."
+Write-Host "Recommended check:"
+Write-Host "  C:\Python\flop-agent\flop.cmd doctor"
 Write-Host ""
-Write-Host "The private key will be generated locally on your PC, not in ChatGPT."
